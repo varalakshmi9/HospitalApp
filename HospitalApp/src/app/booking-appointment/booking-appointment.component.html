@@ -1,0 +1,52 @@
+<h1 class="nav" style="background-color:rgb(45, 15, 211); color:antiquewhite">
+    🇭‌🇴‌🇸‌🇵‌🇮‌🇹‌🇦‌🇱‌ 🇸‌🇪‌🇷‌🇻‌🇮‌🇨‌🇪‌🇸‌
+  </h1>
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" routerLink="/home">Log out</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/docter-info">Doctors</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/patient-info">Patients</a>
+    </li>
+  </ul>
+  <form [formGroup]="submitForm" (ngSubmit)="submit()">
+    <div class="card">
+      <div class="mb-3">
+        <label for="exampleInputPatientName" class="form-label">Patient Name:</label>
+        <input formControlName="patientName" type="text" class="form-control" id="exampleInputPatientName">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputMobile" class="form-label">Mobile Number</label>
+        <input formControlName="mobile" type="number" class="form-control" id="exampleInputMobile">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputMobile" class="form-label">Appointment Date</label>
+        <input formControlName="appointmentDate" type='date' class="form-control" />
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputMobile" class="form-label">Appointment time</label>
+        <input formControlName="appointmentTime" type='time' class="form-control" />
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputMobile" class="form-label">Selct the doctor</label>
+        </div>
+      <div class="d-grid">
+        <select
+          class="custom-select mb-3"
+          (change) ="changeDoctor($event)"
+          formControlName="selectedDocter"
+          >
+          <option value="">Choose Doctor</option>
+          <option *ngFor="let doctor of selectedDocter" [ngValue]="doctor">
+            {{doctor}}
+          </option>
+  
+        </select>
+      </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+  </form>
+  

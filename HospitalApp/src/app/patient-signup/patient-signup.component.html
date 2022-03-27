@@ -1,0 +1,47 @@
+<h1 class="nav" style="background-color:rgb(92, 43, 226); color:antiquewhite">
+   🇭‌🇴‌🇸‌🇵‌🇮‌🇹‌🇦‌🇱‌ 🇸‌🇪‌🇷‌🇻‌🇮‌🇨‌🇪‌🇸‌
+  </h1>
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" routerLink="/home">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/docters">Doctors</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/patients">Patients</a>
+    </li>
+  </ul>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="text-center">
+            <h1>Sign Up</h1>
+          </div>
+          <form [formGroup]="signupForm" (ngSubmit)="signUp()">
+            <div class="mb-3">
+              <div class="mb-3">
+                <label for="exampleInputName" class="form-label">Full Name</label>
+                <input formControlName="fullname" type="text" class="form-control" id="exampleInputName">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputMobile" class="form-label">Mobile Number</label>
+                <input formControlName="mobile" type="number" class="form-control" id="exampleInputMobile">
+              </div>
+              <label for="exampleInputEmail1" class="form-label">Email address</label>
+              <input formControlName="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input formControlName="password" type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Signup</button>
+          </form>
+          <a style="color:white; margin-top:10px" routerLink="/patient-login">Already registered? Click to Login</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  

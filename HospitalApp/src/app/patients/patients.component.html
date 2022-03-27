@@ -1,0 +1,96 @@
+<h1 class="nav" style="background-color:#0b16b1; color:#f4f6fc">
+   ‌ 🇭‌🇴‌🇸‌🇵‌🇮‌🇹‌🇦‌🇱‌ 🇸‌🇪‌🇷‌🇻‌🇮‌🇨‌🇪‌🇸‌
+  </h1>
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" routerLink="/home">Log out</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/docters">Doctors</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/patients">Patients</a>
+    </li>
+  </ul>
+  <table class="table mt-3">
+    <thead>
+      <tr>
+        <th scope="col">Patient ID</th>
+        <th scope="col">Patient Name</th>
+        <th scope="col">Mobile</th>
+        <th scope="col">Appointment Date</th>
+        <th scope="col">Appointment Time</th>
+        <th scope="col">Docter</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of patientData">
+        <td>{{row.id}}</td>
+        <td>{{row.patientName}}</td>
+        <td>{{row.mobile}}</td>
+        <td>{{row.appointmentDate}}</td>
+        <td>{{row.appointmentTime}}</td>
+        <td>{{row.selectedDocter}}</td>
+        <td>
+          <button (click)="onEdit(row)" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-info">Edit</button>
+          <button (click)="deletePatient(row)" type="button" class="btn btn-danger mx-3">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Patient details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="formValue">
+            <div class="card">
+              <div class="mb-3">
+                <label for="exampleInputPatientName" class="form-label">Patient Name:</label>
+                <input formControlName="patientName" type="text" class="form-control" id="exampleInputPatientName">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputMobile" class="form-label">Mobile Number</label>
+                <input formControlName="mobile" type="number" class="form-control" id="exampleInputMobile">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputMobile" class="form-label">Appointment Date</label>
+                <input formControlName="appointmentDate" type='date' class="form-control" />
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputMobile" class="form-label">Appointment time</label>
+                <input formControlName="appointmentTime" type='time' class="form-control" />
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputMobile" class="form-label">Selct the doctor</label>
+              </div>
+              <div class="d-grid">
+                <select class="custom-select mb-3"
+                        (change)="changeDoctor($event)"
+                        formControlName="selectedDocter">
+                  <option value="">Choose Doctor</option>
+                  <option *ngFor="let doctor of selectedDocter" [ngValue]="doctor">
+                    {{doctor}}
+                  </option>
+                </select>
+              </div>
+  
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" *ngIf="showUpdate" (click)="updatePatientDetails()" class="btn btn-primary">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  

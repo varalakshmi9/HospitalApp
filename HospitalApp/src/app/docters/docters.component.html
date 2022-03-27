@@ -1,0 +1,98 @@
+<h1 class="nav" style="background-color:rgb(48, 19, 177); color:antiquewhite">
+   🇭‌🇴‌🇸‌🇵‌🇮‌🇹‌🇦‌🇱‌ 🇸‌🇪‌🇷‌🇻‌🇮‌🇨‌🇪‌🇸‌
+  </h1>
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" routerLink="/home">Log out</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/docters">Doctors</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/patients">Patients</a>
+    </li>
+    <li class="nav-item">
+      <div class="d-flex">
+        <button class="btn btn-success" (click)="clickAddDocter()" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Doctor</button>
+      </div>
+    </li>
+  </ul>
+  <table class="table mt-3">
+    <thead>
+      <tr>
+        <th scope="col">Doctor ID</th>
+        <th scope="col">Doctor Name</th>
+        <th scope="col">Mobile</th>
+        <th scope="col">Age</th>
+        <th scope="col">Gender</th>
+        <th scope="col">Specialization</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of docterData">
+        <td>{{row.id}}</td>
+        <td>{{row.docterName}}</td>
+        <td>{{row.mobile}}</td>
+        <td>{{row.age}}</td>
+        <td>{{row.gender}}</td>
+        <td>{{row.specialization}}</td>
+        <td>
+          <button (click)="onEdit(row)" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-info">Edit</button>
+          <button (click)="deleteDocter(row)" type="button" class="btn btn-danger mx-3">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Docter details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="formValue">
+            <div class="card">
+              <div class="mb-3">
+                <label for="exampleInputPatientName" class="form-label">Docter Name:</label>
+                <input formControlName="docterName" type="text" class="form-control" id="exampleInputPatientName">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputMobile" class="form-label">Mobile Number</label>
+                <input formControlName="mobile" type="number" class="form-control" id="exampleInputMobile">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputMobile" class="form-label">Age</label>
+                <input formControlName="age" type='number' class="form-control" />
+              </div>
+              <div class="form-control">
+                <label>
+                  <input type="radio" value="Male" formControlName="gender" >
+                  <span>male</span>
+                </label>
+                <label>
+                  <input type="radio" value="Female" formControlName="gender" >
+                  <span>female</span>
+                </label>
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputMobile" class="form-label">Specialization</label>
+                <input formControlName="specialization" type='text' class="form-control" />
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" *ngIf="showUpdate" (click)="updateDocterDetails()" class="btn btn-primary">Update</button>
+        <button type="button" *ngIf="showAdd" (click)="postDocterDetails()" class="btn btn-primary">Add</button>        
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  

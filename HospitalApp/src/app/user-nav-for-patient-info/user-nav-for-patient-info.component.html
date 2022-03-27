@@ -1,0 +1,41 @@
+<h1 class="nav" style="background-color:rgb(28, 4, 138); color:antiquewhite">
+  🇭‌🇴‌🇸‌🇵‌🇮‌🇹‌🇦‌🇱‌ 🇸‌🇪‌🇷‌🇻‌🇮‌🇨‌🇪‌🇸‌
+  </h1>
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" routerLink="/home">Log out</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/docter-info">Doctors</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/patient-info">Patients</a>
+    </li>
+   
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/booking-appointment">New Appointment</a>
+    </li>
+  </ul>
+  <table class="table mt-3">
+    <thead>
+      <tr>
+        <th scope="col">Patient ID</th>
+        <th scope="col">Patient Name</th>
+        <th scope="col">Mobile</th>
+        <th scope="col">Appointment Date</th>
+        <th scope="col">Appointment Time</th>
+        <th scope="col">Docter</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of patientData">
+        <td>{{row.id}}</td>
+        <td>{{row.patientName}}</td>
+        <td>{{row.mobile}}</td>
+        <td>{{row.appointmentDate}}</td>
+        <td>{{row.appointmentTime}}</td>
+        <td>{{row.selectedDocter}}</td>
+      </tr>
+    </tbody>
+  </table>
+  
